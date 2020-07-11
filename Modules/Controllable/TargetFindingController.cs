@@ -6,7 +6,7 @@ namespace ArrogantCrawler.Modules.Controllable
     {
         private Controllable _controllable;
         private Area2D _sight;
-        private Controllable _target;
+        private Node2D _target;
 
         public override void _Ready()
         {
@@ -36,6 +36,7 @@ namespace ArrogantCrawler.Modules.Controllable
 
         private void HandleAutoMovement()
         {
+            if (_target is Pickable.Pickable pickable && pickable.PickedUp) _target = null;
             if (_target == null)
             {
                 _controllable.Velocity = Vector2.Zero;
@@ -55,10 +56,20 @@ namespace ArrogantCrawler.Modules.Controllable
 
         private void FindTarget()
         {
+            // TODO Filter then sort maybe?
             foreach (var body in _sight.GetOverlappingBodies())
             {
-                if (!(body is Controllable controllable) || controllable.IsPlayer == _controllable.IsPlayer || _target != null) continue;
+                if (!(body is Controllable controllable) ||
+                    controllable.IsPlayer == _controllable.IsPlayer || _target != null) continue;
                 _target = controllable;
+                return;
+            }
+
+            foreach (var area in _sight.GetOverlappingAreas())
+            {
+                if (!(area is Pickable.Pickable pickable) || !_controllable.IsPlayer || _target != null ||
+                    pickable.PickedUp) continue;
+                _target = pickable;
                 return;
             }
         }

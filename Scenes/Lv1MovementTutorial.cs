@@ -15,6 +15,8 @@ namespace ArrogantCrawler.Scenes
             _exitButton.Connect("OnPickedUp", this, nameof(OnExitButtonPickedUp));
             _exit = GetNode<Pickable>("Exit");
             _exit.Connect("OnPickedUp", this, nameof(OnExitPickedUp));
+            _exit.Visible = false;
+            _exit.PickedUp = true;
         }
 
         private void OnExitButtonPickedUp(Pickable pickable, Node by)
@@ -23,6 +25,7 @@ namespace ArrogantCrawler.Scenes
             pickable.Sprite.Play("picked");
             pickable.PickedUp = true;
             _exit.Show();
+            _exit.PickedUp = false;
         }
 
         private void OnExitPickedUp(Pickable pickable, Node by)
