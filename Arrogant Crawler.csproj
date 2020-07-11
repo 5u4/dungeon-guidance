@@ -57,8 +57,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\Controllable\ActionLock.cs" />
+    <Compile Include="Modules\Controllable\Attack.cs" />
     <Compile Include="Modules\Controllable\Controllable.cs" />
     <Compile Include="Modules\Controllable\ControllableSprite.cs" />
+    <Compile Include="Modules\Controllable\TargetFindingController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

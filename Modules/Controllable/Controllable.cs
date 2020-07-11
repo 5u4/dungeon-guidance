@@ -5,12 +5,11 @@ namespace ArrogantCrawler.Modules.Controllable
     public class Controllable : KinematicBody2D
     {
         public Vector2 Velocity = Vector2.Zero;
+
+        public ActionLock ActionLock;
         public AnimatedSprite Sprite;
-        public Area2D Sight;
-        public Area2D AttackTrigger;
-        public Area2D AttackRange;
-        public Controllable Target;
-        public bool IsAttacking { get; private set; }
+        public Attack AttackController;
+        public TargetFindingController TargetFindingController;
 
         [Export] public float MoveSpeed = 50;
         [Export] public float SightRadius = 50;
@@ -20,103 +19,38 @@ namespace ArrogantCrawler.Modules.Controllable
 
         public override void _Ready()
         {
+            ActionLock = GetNode<ActionLock>("ActionLock");
             Sprite = GetNode<AnimatedSprite>("AnimatedSprite");
-            Sprite.Connect("animation_finished", this, nameof(OnAnimationFinish));
-            Sight = GetNode<Area2D>("Sight");
-            Sight.AddChild(MakeCircleCollisionShape(SightRadius));
-            Sight.Connect("body_entered", this, nameof(OnBodyEnterSight));
-            Sight.Connect("body_exited", this, nameof(OnBodyExitSight));
-            AttackTrigger = GetNode<Area2D>("AttackTrigger");
-            AttackTrigger.AddChild(MakeCircleCollisionShape(AttackTriggerRadius));
-            // AttackTrigger.Connect("body_entered", this, nameof(OnBodyEnterAttackTrigger));
+            AttackController = GetNode<Attack>("Attack");
+            TargetFindingController = GetNode<TargetFindingController>("TargetFinding");
+
+            ConnectChildrenSignals(this);
         }
 
-        public override void _PhysicsProcess(float delta)
+        public void ConnectChildrenSignals(Node root)
         {
-            ScanAttackTarget();
-            if (IsAttacking) return;
-            if (InControl) HandleActiveMovement();
-            else HandlePassiveMovement();
-        }
-
-        private void HandleActiveMovement()
-        {
-            Velocity.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
-            Velocity.y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
-            Move();
-        }
-
-        private void HandlePassiveMovement()
-        {
-            if (Target == null)
+            foreach (Node node in root.GetChildren())
             {
-                Velocity = Vector2.Zero;
-                return;
-            }
-            Velocity = Position.DirectionTo(Target.Position);
-            Move();
-        }
-
-        private void Move()
-        {
-            Velocity = MoveAndSlide(Velocity.Normalized() * MoveSpeed);
-        }
-
-        private void Attack()
-        {
-            IsAttacking = true;
-            Sprite.Play("attack");
-        }
-
-        private CollisionShape2D MakeCircleCollisionShape(float radius)
-        {
-            return new CollisionShape2D {Shape = new CircleShape2D {Radius = radius}};
-        }
-
-        private void ScanTarget()
-        {
-            foreach (var body in Sight.GetOverlappingBodies())
-            {
-                if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer || Target != null) return;
-                Target = controllable;
-                return;
+                if (node.HasMethod("SafeConnect")) node.Call("SafeConnect");
+                ConnectChildrenSignals(node);
             }
         }
 
-        private void ScanAttackTarget()
-        {
-            foreach (var body in AttackTrigger.GetOverlappingBodies())
-            {
-                if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer) return;
-                Attack();
-                return;
-            }
-        }
-
-        private void OnBodyEnterSight(Node body)
-        {
-            if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer || Target != null) return;
-            Target = controllable;
-        }
-
-        private void OnBodyExitSight(Node body)
-        {
-            if (body == null || Target == null || body.Name != Target.Name) return;
-            Target = null;
-            ScanTarget();
-        }
-
-        private void OnBodyEnterAttackTrigger(Node body)
-        {
-            if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer) return;
-            Attack();
-        }
-
-        private void OnAnimationFinish()
-        {
-            if (Sprite.Animation != "attack") return;
-            IsAttacking = false;
-            ScanAttackTarget();
-        }
+        // private void ScanTarget()
+        // {
+        //     foreach (var body in Sight.GetOverlappingBodies())
+        //     {
+        //         if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer || Target != null) return;
+        //         Target = controllable;
+        //         return;
+        //     }
+        // }
+        //
+        // private void OnBodyExitSight(Node body)
+        // {
+        //     if (body == null || Target == null || body.Name != Target.Name) return;
+        //     Target = null;
+        //     ScanTarget();
+        // }
     }
 }

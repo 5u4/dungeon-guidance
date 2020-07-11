@@ -20,13 +20,15 @@ namespace ArrogantCrawler.Modules.Controllable
 
         private void HandleHorizontalFlip()
         {
+            if (_controllable.ActionLock.IsLocked) return;
             var facing = Math.Sign(_controllable.Velocity.x);
             if (facing != 0) FlipH = facing != 1;
         }
 
         private string GetAnimationState()
         {
-            return _controllable.IsAttacking ? null : _controllable.Velocity.Equals(Vector2.Zero) ? "idle" : "move";
+            if (_controllable.AttackController.IsAttacking) return "attack";
+            return _controllable.Velocity.Equals(Vector2.Zero) ? "idle" : "move";
         }
     }
 }
