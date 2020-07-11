@@ -26,7 +26,7 @@ namespace ArrogantCrawler.Modules.Controllable
 
         private string GetAnimationState()
         {
-            return _controllable.Velocity.Equals(Vector2.Zero) ? "idle" : "move";
+            return _controllable.IsAttacking ? null : _controllable.Velocity.Equals(Vector2.Zero) ? "idle" : "move";
         }
     }
 }

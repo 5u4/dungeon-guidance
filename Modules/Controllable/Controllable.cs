@@ -5,24 +5,36 @@ namespace ArrogantCrawler.Modules.Controllable
     public class Controllable : KinematicBody2D
     {
         public Vector2 Velocity = Vector2.Zero;
+        public AnimatedSprite Sprite;
         public Area2D Sight;
+        public Area2D AttackTrigger;
+        public Area2D AttackRange;
         public Controllable Target;
+        public bool IsAttacking { get; private set; }
 
         [Export] public float MoveSpeed = 50;
         [Export] public float SightRadius = 50;
+        [Export] public float AttackTriggerRadius = 20;
         [Export] public bool InControl;
         [Export] public bool IsPlayer;
 
         public override void _Ready()
         {
+            Sprite = GetNode<AnimatedSprite>("AnimatedSprite");
+            Sprite.Connect("animation_finished", this, nameof(OnAnimationFinish));
             Sight = GetNode<Area2D>("Sight");
             Sight.AddChild(MakeCircleCollisionShape(SightRadius));
             Sight.Connect("body_entered", this, nameof(OnBodyEnterSight));
             Sight.Connect("body_exited", this, nameof(OnBodyExitSight));
+            AttackTrigger = GetNode<Area2D>("AttackTrigger");
+            AttackTrigger.AddChild(MakeCircleCollisionShape(AttackTriggerRadius));
+            // AttackTrigger.Connect("body_entered", this, nameof(OnBodyEnterAttackTrigger));
         }
 
         public override void _PhysicsProcess(float delta)
         {
+            ScanAttackTarget();
+            if (IsAttacking) return;
             if (InControl) HandleActiveMovement();
             else HandlePassiveMovement();
         }
@@ -50,6 +62,12 @@ namespace ArrogantCrawler.Modules.Controllable
             Velocity = MoveAndSlide(Velocity.Normalized() * MoveSpeed);
         }
 
+        private void Attack()
+        {
+            IsAttacking = true;
+            Sprite.Play("attack");
+        }
+
         private CollisionShape2D MakeCircleCollisionShape(float radius)
         {
             return new CollisionShape2D {Shape = new CircleShape2D {Radius = radius}};
@@ -64,7 +82,17 @@ namespace ArrogantCrawler.Modules.Controllable
                 return;
             }
         }
-        
+
+        private void ScanAttackTarget()
+        {
+            foreach (var body in AttackTrigger.GetOverlappingBodies())
+            {
+                if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer) return;
+                Attack();
+                return;
+            }
+        }
+
         private void OnBodyEnterSight(Node body)
         {
             if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer || Target != null) return;
@@ -76,6 +104,19 @@ namespace ArrogantCrawler.Modules.Controllable
             if (body == null || Target == null || body.Name != Target.Name) return;
             Target = null;
             ScanTarget();
+        }
+
+        private void OnBodyEnterAttackTrigger(Node body)
+        {
+            if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer) return;
+            Attack();
+        }
+
+        private void OnAnimationFinish()
+        {
+            if (Sprite.Animation != "attack") return;
+            IsAttacking = false;
+            ScanAttackTarget();
         }
     }
 }
