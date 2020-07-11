@@ -63,10 +63,15 @@
     <Compile Include="Modules\Controllable\ControllableSprite.cs" />
     <Compile Include="Modules\Controllable\HitController.cs" />
     <Compile Include="Modules\Controllable\TargetFindingController.cs" />
+    <Compile Include="Modules\ExitButton\OnPicked.cs" />
+    <Compile Include="Modules\Exit\OnPicked.cs" />
+    <Compile Include="Modules\Pickable\Pickable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\Lv1MovementTutorial.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Controllable" />
+    <Folder Include="Scenes" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

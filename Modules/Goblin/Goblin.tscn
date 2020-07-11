@@ -69,6 +69,6 @@ animations = [ {
 MoveSpeed = 40.0
 SightRadius = 40.0
 
-[node name="AnimatedSprite" parent="." index="3"]
+[node name="AnimatedSprite" parent="." index="4"]
 frames = SubResource( 13 )
 animation = "idle"

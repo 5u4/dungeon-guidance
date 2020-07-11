@@ -464,4 +464,5 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [node name="Dungeon" type="TileMap"]
 tile_set = SubResource( 16 )
+cell_size = Vector2( 16, 16 )
 format = 1
