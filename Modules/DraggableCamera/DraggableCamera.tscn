@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Modules/DraggableCamera/DraggableCamera.cs" type="Script" id=1]
+
+[node name="DraggableCamera" type="Camera2D"]
+current = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+editor_draw_screen = false
+script = ExtResource( 1 )

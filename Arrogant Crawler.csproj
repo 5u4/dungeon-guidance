@@ -63,6 +63,7 @@
     <Compile Include="Modules\Controllable\ControllableSprite.cs" />
     <Compile Include="Modules\Controllable\HitController.cs" />
     <Compile Include="Modules\Controllable\TargetFindingController.cs" />
+    <Compile Include="Modules\DraggableCamera\DraggableCamera.cs" />
     <Compile Include="Modules\ExitButton\OnPicked.cs" />
     <Compile Include="Modules\Exit\OnPicked.cs" />
     <Compile Include="Modules\Pickable\Pickable.cs" />
