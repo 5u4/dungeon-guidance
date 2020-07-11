@@ -55,16 +55,27 @@ namespace ArrogantCrawler.Modules.Controllable
             return new CollisionShape2D {Shape = new CircleShape2D {Radius = radius}};
         }
 
+        private void ScanTarget()
+        {
+            foreach (var body in Sight.GetOverlappingBodies())
+            {
+                if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer || Target != null) return;
+                Target = controllable;
+                return;
+            }
+        }
+        
         private void OnBodyEnterSight(Node body)
         {
-            if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer) return;
+            if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer || Target != null) return;
             Target = controllable;
         }
 
         private void OnBodyExitSight(Node body)
         {
-            if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer) return;
+            if (body == null || Target == null || body.Name != Target.Name) return;
             Target = null;
+            ScanTarget();
         }
     }
 }

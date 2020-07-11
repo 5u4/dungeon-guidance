@@ -66,6 +66,7 @@ animations = [ {
 } ]
 
 [node name="Crawler" instance=ExtResource( 1 )]
+SightRadius = 75.0
 IsPlayer = true
 
 [node name="AnimatedSprite" parent="." index="2"]

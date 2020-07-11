@@ -14,5 +14,9 @@ shape = SubResource( 1 )
 
 [node name="Sight" type="Area2D" parent="."]
 
+[node name="AttackRange" type="Area2D" parent="."]
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 script = ExtResource( 2 )
+
+[node name="AttackAnimation" type="AnimationPlayer" parent="."]
