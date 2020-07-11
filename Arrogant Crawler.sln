@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrogant Crawler", "Arrogant Crawler.csproj", "{D19D30B4-D968-48DE-8097-30D1D153A263}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D19D30B4-D968-48DE-8097-30D1D153A263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19D30B4-D968-48DE-8097-30D1D153A263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19D30B4-D968-48DE-8097-30D1D153A263}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{D19D30B4-D968-48DE-8097-30D1D153A263}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{D19D30B4-D968-48DE-8097-30D1D153A263}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{D19D30B4-D968-48DE-8097-30D1D153A263}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
