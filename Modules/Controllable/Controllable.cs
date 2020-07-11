@@ -34,22 +34,5 @@ namespace ArrogantCrawler.Modules.Controllable
                 ConnectChildrenSignals(node);
             }
         }
-
-        // private void ScanTarget()
-        // {
-        //     foreach (var body in Sight.GetOverlappingBodies())
-        //     {
-        //         if (!(body is Controllable controllable) || controllable.IsPlayer == IsPlayer || Target != null) return;
-        //         Target = controllable;
-        //         return;
-        //     }
-        // }
-        //
-        // private void OnBodyExitSight(Node body)
-        // {
-        //     if (body == null || Target == null || body.Name != Target.Name) return;
-        //     Target = null;
-        //     ScanTarget();
-        // }
     }
 }
