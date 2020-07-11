@@ -10,6 +10,7 @@ namespace ArrogantCrawler.Modules.Controllable
         public AnimatedSprite Sprite;
         public Attack AttackController;
         public TargetFindingController TargetFindingController;
+        public HitController HitController;
 
         [Export] public float MoveSpeed = 50;
         [Export] public float SightRadius = 50;
@@ -22,6 +23,7 @@ namespace ArrogantCrawler.Modules.Controllable
             Sprite = GetNode<AnimatedSprite>("AnimatedSprite");
             AttackController = GetNode<Attack>("Attack");
             TargetFindingController = GetNode<TargetFindingController>("TargetFinding");
+            HitController = GetNode<HitController>("HitController");
 
             ConnectChildrenSignals(this);
         }

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Modules/Controllable/Controllable.cs" type="Script" id=1]
 [ext_resource path="res://Modules/Controllable/ControllableSprite.cs" type="Script" id=2]
 [ext_resource path="res://Modules/Controllable/Attack.cs" type="Script" id=3]
 [ext_resource path="res://Modules/Controllable/ActionLock.cs" type="Script" id=4]
 [ext_resource path="res://Modules/Controllable/TargetFindingController.cs" type="Script" id=5]
+[ext_resource path="res://Modules/Controllable/HitController.cs" type="Script" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -26,6 +27,9 @@ script = ExtResource( 3 )
 script = ExtResource( 5 )
 
 [node name="Sight" type="Area2D" parent="TargetFinding"]
+
+[node name="HitController" type="Node2D" parent="."]
+script = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 script = ExtResource( 2 )

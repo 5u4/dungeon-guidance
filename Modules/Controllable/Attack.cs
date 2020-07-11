@@ -28,6 +28,7 @@ namespace ArrogantCrawler.Modules.Controllable
         public void SafeConnect()
         {
             _controllable.Sprite.Connect("animation_finished", this, nameof(OnAnimationFinished));
+            _attackRange.Connect("body_entered", this, nameof(OnBodyEnteredAttackRange));
         }
 
         public override void _PhysicsProcess(float delta)
@@ -68,6 +69,12 @@ namespace ArrogantCrawler.Modules.Controllable
             if (_attackRangeCollision != null) _attackRangeCollision.Disabled = true;
             IsAttacking = false;
             _controllable.ActionLock.Unlock();
+        }
+
+        private void OnBodyEnteredAttackRange(Node body)
+        {
+            if (!(body is Controllable controllable) || controllable.IsPlayer == _controllable.IsPlayer) return;
+            controllable.HitController.Hit(_controllable);
         }
     }
 }
