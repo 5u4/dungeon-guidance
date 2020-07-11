@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Modules/Controllable/Controllable.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/knight_idle_spritesheet.png" type="Texture" id=2]
-[ext_resource path="res://Assets/knight_run_spritesheet.png" type="Texture" id=3]
+[ext_resource path="res://Assets/goblin_idle_spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Assets/goblin_run_spritesheet.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -65,8 +65,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Crawler" instance=ExtResource( 1 )]
-IsPlayer = true
+[node name="Goblin" instance=ExtResource( 1 )]
+MoveSpeed = 40.0
+SightRadius = 40.0
 
 [node name="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 13 )
