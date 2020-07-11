@@ -68,7 +68,6 @@ animations = [ {
 [node name="Goblin" instance=ExtResource( 1 )]
 MoveSpeed = 40.0
 SightRadius = 40.0
-AttackTriggerRadius = 0.0
 
 [node name="AnimatedSprite" parent="." index="4"]
 frames = SubResource( 13 )

@@ -14,8 +14,6 @@ namespace ArrogantCrawler.Modules.Controllable
         {
             _controllable = GetNode<Controllable>("..");
             _attackTrigger = GetNode<Area2D>("AttackTrigger");
-            _attackTrigger.AddChild(new CollisionShape2D
-                {Shape = new CircleShape2D {Radius = _controllable.AttackTriggerRadius}});
         }
 
         public void SafeConnect()

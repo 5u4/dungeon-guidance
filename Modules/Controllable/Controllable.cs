@@ -13,7 +13,6 @@ namespace ArrogantCrawler.Modules.Controllable
 
         [Export] public float MoveSpeed = 50;
         [Export] public float SightRadius = 50;
-        [Export] public float AttackTriggerRadius = 20;
         [Export] public bool InControl;
         [Export] public bool IsPlayer;
 
