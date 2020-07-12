@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Arrogant Crawler"
-run/main_scene="res://Scenes/Lv1MovementTutorial.tscn"
+run/main_scene="res://Scenes/Starting.tscn"
 config/icon="res://icon.png"
 
 [autoload]
