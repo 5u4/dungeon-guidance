@@ -75,6 +75,7 @@
     <Compile Include="Scenes\Lv1MovementTutorial.cs" />
     <Compile Include="Scenes\Lv2ControlTutorial.cs" />
     <Compile Include="Scenes\Lv3.cs" />
+    <Compile Include="Scenes\Splash.cs" />
     <Compile Include="Scenes\Starting.cs" />
   </ItemGroup>
   <ItemGroup>
