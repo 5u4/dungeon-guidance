@@ -14,6 +14,7 @@ namespace ArrogantCrawler.Scenes
         private Resource _pointingHand;
         private DraggableCamera _camera;
         private CameraShake _cameraShake;
+        private Label _outOfControlIndicator;
 
         public Controllable CurrentControllable;
 
@@ -27,12 +28,13 @@ namespace ArrogantCrawler.Scenes
             SetMouseMode(Input.CursorShape.Arrow);
             _camera = GetNode<DraggableCamera>("../DraggableCamera");
             _cameraShake = GetNode<CameraShake>("CameraShake");
+            _outOfControlIndicator = GetNode<CanvasLayer>("CanvasLayer").GetNode<Label>("OutOfControl");
         }
 
         public override void _Process(float delta)
         {
-            if (!Input.IsActionJustPressed("ui_control") || CurrentControllable == null) return;
-            LeaveControl();
+            if (Input.IsActionJustPressed("ui_control") && CurrentControllable != null) LeaveControl();
+            if (Input.IsActionJustPressed("ui_restart")) GetTree().ReloadCurrentScene();
         }
 
         public void Control(Controllable controllable)
@@ -110,6 +112,7 @@ namespace ArrogantCrawler.Scenes
                 if (!(node is Controllable controllable)) continue;
                 controllables.Add(controllable);
             }
+            HandleOutOfControl(controllables);
 
             return controllables;
         }
@@ -122,6 +125,14 @@ namespace ArrogantCrawler.Scenes
         public void CameraShake()
         {
             _cameraShake.Shake(_camera);
+        }
+
+        private void HandleOutOfControl(List<Controllable> controllables)
+        {
+            var count = 0;
+            controllables.ForEach(controllable => count += controllable.IsPlayer || controllable.Health <= 0 ? 0 : 1);
+            if (count > 0) return;
+            _outOfControlIndicator.Show();
         }
     }
 }
