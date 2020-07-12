@@ -74,6 +74,7 @@ namespace ArrogantCrawler.Scenes
             _gameManager.SetAllControllableEnabled(false);
             _camera.Target = controllable;
             _camera.CanMove = false;
+            _goblin.ControlIndicator.Show();
             _animationPlayer.Play("ControllableTutorial");
             _movementTutorialPlayed = true;
         }

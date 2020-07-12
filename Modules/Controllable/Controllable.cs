@@ -12,6 +12,7 @@ namespace ArrogantCrawler.Modules.Controllable
         public ControlController ControlController;
         public AnimationPlayer AnimationPlayer;
         public DeathHandler DeathHandler;
+        public AnimatedSprite ControlIndicator;
 
         [Export] public Vector2 Velocity = Vector2.Zero;
         [Export] public Vector2 Impulse = Vector2.Zero;
@@ -34,6 +35,7 @@ namespace ArrogantCrawler.Modules.Controllable
             ControlController = GetNode<ControlController>("Control");
             AnimationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             DeathHandler = GetNode<DeathHandler>("DeathHandler");
+            ControlIndicator = GetNode<AnimatedSprite>("ControlIndicator");
 
             ConnectChildrenSignals(this);
         }

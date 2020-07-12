@@ -42,6 +42,7 @@ namespace ArrogantCrawler.Scenes
             CurrentControllable = controllable;
             CurrentControllable.InControl = true;
             SetAllControllableEnabled(false);
+            controllable.ControlIndicator.Show();
         }
 
         public void LeaveControl()
@@ -49,6 +50,7 @@ namespace ArrogantCrawler.Scenes
             _camera.Target = null;
             _camera.CanMove = true;
             CurrentControllable.InControl = false;
+            CurrentControllable.ControlIndicator.Hide();
             CurrentControllable = null;
             SetAllControllableEnabled(true);
         }
