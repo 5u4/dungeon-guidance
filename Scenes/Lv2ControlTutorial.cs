@@ -34,7 +34,7 @@ namespace ArrogantCrawler.Scenes
         {
             if ((!(@event is InputEventKey key) || !key.IsPressed()) &&
                 (!(@event is InputEventMouseButton mouse) || !mouse.Pressed)) return;
-            _animationPlayer.PlaybackSpeed = 1;
+            _animationPlayer.PlaybackSpeed = Input.IsActionPressed("ui_fastforward") ? 5 : 1;
         }
 
         private void OnExitButtonPickedUp(Pickable pickable, Node by)
