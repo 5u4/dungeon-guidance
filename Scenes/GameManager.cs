@@ -11,6 +11,8 @@ namespace ArrogantCrawler.Scenes
         private Resource _move;
         private Resource _drag;
         private Resource _pointingHand;
+        private Camera2D _camera;
+        private CameraShake _cameraShake;
 
         public override void _Ready()
         {
@@ -20,6 +22,8 @@ namespace ArrogantCrawler.Scenes
             _pointingHand = ResourceLoader.Load("res://Assets/cursor-pointinghand.png");
             Input.SetCustomMouseCursor(_pointingHand, Input.CursorShape.PointingHand);
             SetMouseMode(Input.CursorShape.Arrow);
+            _camera = GetNode<Camera2D>("../DraggableCamera");
+            _cameraShake = GetNode<CameraShake>("CameraShake");
         }
 
         public void SetMouseMode(Input.CursorShape shape)
@@ -84,6 +88,11 @@ namespace ArrogantCrawler.Scenes
         public void SetAllControllableEnabled(bool enabled)
         {
             GetControllables().ForEach(controllable => controllable.ControlController.Visible = enabled);
+        }
+
+        public void CameraShake()
+        {
+            _cameraShake.Shake(_camera);
         }
     }
 }
