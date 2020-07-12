@@ -16,6 +16,7 @@ namespace ArrogantCrawler.Scenes
         private CameraShake _cameraShake;
         private Label _outOfControlIndicator;
 
+        public Label GameOverIndicator;
         public Controllable CurrentControllable;
 
         public override void _Ready()
@@ -28,12 +29,14 @@ namespace ArrogantCrawler.Scenes
             SetMouseMode(Input.CursorShape.Arrow);
             _camera = GetNode<DraggableCamera>("../DraggableCamera");
             _cameraShake = GetNode<CameraShake>("CameraShake");
-            _outOfControlIndicator = GetNode<CanvasLayer>("CanvasLayer").GetNode<Label>("OutOfControl");
+            var canvas = GetNode<CanvasLayer>("CanvasLayer");
+            _outOfControlIndicator = canvas.GetNode<Label>("OutOfControl");
+            GameOverIndicator = canvas.GetNode<Label>("GameOver");
         }
 
         public override void _Process(float delta)
         {
-            if (Input.IsActionJustPressed("ui_control") && CurrentControllable != null) LeaveControl();
+            if (Input.IsActionJustPressed("ui_control") && CurrentControllable != null) LeaveControl(CurrentControllable);
             if (Input.IsActionJustPressed("ui_restart")) GetTree().ReloadCurrentScene();
         }
 
@@ -47,8 +50,9 @@ namespace ArrogantCrawler.Scenes
             controllable.ControlIndicator.Show();
         }
 
-        public void LeaveControl()
+        public void LeaveControl(Controllable controllable)
         {
+            if (controllable != CurrentControllable) return;
             _camera.Target = null;
             _camera.CanMove = true;
             SetAllControllableEnabled(true);

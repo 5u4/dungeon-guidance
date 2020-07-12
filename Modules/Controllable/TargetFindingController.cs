@@ -37,6 +37,7 @@ namespace ArrogantCrawler.Modules.Controllable
 
         private void HandleAutoMovement()
         {
+            if (_controllable.Health <= 0) return;
             if (_target is Pickable.Pickable pickable && pickable.PickedUp) _target = null;
             if (_target == null)
             {

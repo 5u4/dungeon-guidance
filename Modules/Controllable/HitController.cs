@@ -36,7 +36,8 @@ namespace ArrogantCrawler.Modules.Controllable
             if (_controllable.Health > 0) return;
             _controllable.ActionLock.Lock();
             _controllable.DeathHandler.HandleDeath();
-            _gameManager?.LeaveControl();
+            _gameManager?.LeaveControl(_controllable);
+            if (_controllable.IsPlayer) _gameManager?.GameOverIndicator.Show();
         }
 
         private void HandleKnockBack(Controllable from)
