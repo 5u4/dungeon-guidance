@@ -236,11 +236,11 @@ tracks/13/keys = {
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
-region = Rect2( 64, 0, 16, 16 )
+region = Rect2( 80, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
-region = Rect2( 80, 0, 16, 16 )
+region = Rect2( 64, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 5 )
@@ -250,12 +250,12 @@ region = Rect2( 16, 0, 16, 16 )
 animations = [ {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "a2",
+"name": "a3",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "a3",
+"name": "a2",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ) ],
