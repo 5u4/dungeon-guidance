@@ -188,7 +188,7 @@ script = ExtResource( 5 )
 [node name="ControlIndicator" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

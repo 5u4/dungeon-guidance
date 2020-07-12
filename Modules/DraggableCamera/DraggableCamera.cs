@@ -37,7 +37,7 @@ namespace DungeonGuidance.Modules.DraggableCamera
                 case InputEventMouseButton click when click.Pressed && Input.IsActionPressed("ui_drag"):
                     _gameManager?.SetMouseMode(Input.CursorShape.Drag);
                     break;
-                case InputEventMouseMotion drag when drag.Pressure > 0 && Input.IsActionPressed("ui_drag"):
+                case InputEventMouseMotion drag when Input.IsActionPressed("ui_drag"):
                     _gameManager?.SetMouseMode(Input.CursorShape.Move);
                     var margin = GetViewportRect().Size * Zoom / 2;
                     var target = Position - drag.Relative;
