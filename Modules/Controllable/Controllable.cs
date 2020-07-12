@@ -13,10 +13,13 @@ namespace ArrogantCrawler.Modules.Controllable
         public AnimationPlayer AnimationPlayer;
 
         [Export] public Vector2 Velocity = Vector2.Zero;
+        [Export] public Vector2 Impulse = Vector2.Zero;
+        [Export] public float ImpulseResist = 4;
         [Export] public float MoveSpeed = 50;
         [Export] public float SightRadius = 50;
         [Export] public bool InControl;
         [Export] public bool IsPlayer;
+        [Export] public float KnockBack = 150;
 
         public override void _Ready()
         {

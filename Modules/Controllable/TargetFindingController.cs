@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace ArrogantCrawler.Modules.Controllable
@@ -20,6 +21,7 @@ namespace ArrogantCrawler.Modules.Controllable
             if (_controllable.ActionLock.IsLocked) return;
             if (_controllable.InControl) HandleActiveMovement();
             else HandleAutoMovement();
+            Move(delta);
         }
 
         public void SafeConnect()
@@ -31,7 +33,6 @@ namespace ArrogantCrawler.Modules.Controllable
         {
             _controllable.Velocity.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
             _controllable.Velocity.y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
-            Move();
         }
 
         private void HandleAutoMovement()
@@ -45,13 +46,15 @@ namespace ArrogantCrawler.Modules.Controllable
             }
 
             _controllable.Velocity = _controllable.Position.DirectionTo(_target.Position);
-            Move();
         }
 
-        private void Move()
+        private void Move(float delta)
         {
             _controllable.Velocity =
-                _controllable.MoveAndSlide(_controllable.Velocity.Normalized() * _controllable.MoveSpeed);
+                _controllable.MoveAndSlide(_controllable.Velocity.Normalized() * _controllable.MoveSpeed +
+                                           _controllable.Impulse);
+            _controllable.Impulse.x = Mathf.Lerp(_controllable.Impulse.x, 0, delta * _controllable.ImpulseResist);
+            _controllable.Impulse.y = Mathf.Lerp(_controllable.Impulse.y, 0, delta * _controllable.ImpulseResist);
         }
 
         private void FindTarget()
