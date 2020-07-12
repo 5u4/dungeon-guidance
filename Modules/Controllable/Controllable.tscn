@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Modules/Controllable/Controllable.cs" type="Script" id=1]
 [ext_resource path="res://Modules/Controllable/ControllableSprite.cs" type="Script" id=2]
@@ -7,9 +7,25 @@
 [ext_resource path="res://Modules/Controllable/TargetFindingController.cs" type="Script" id=5]
 [ext_resource path="res://Modules/Controllable/HitController.cs" type="Script" id=6]
 [ext_resource path="res://Modules/Controllable/ControlController.cs" type="Script" id=7]
+[ext_resource path="res://Assets/damage.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.17027 ), 0.0, 1.61345, 0, 0, Vector2( 0.490196, 0.524816 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.233643, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 30.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 10 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "ShowEmoji"
@@ -102,11 +118,20 @@ script = ExtResource( 5 )
 
 [node name="Sight" type="Area2D" parent="TargetFinding"]
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+script = ExtResource( 2 )
+
 [node name="HitController" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-script = ExtResource( 2 )
+[node name="DamageIndicator" type="Particles2D" parent="HitController"]
+emitting = false
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.65
+local_coords = false
+process_material = SubResource( 8 )
+texture = ExtResource( 8 )
 
 [node name="Emoji" type="AnimatedSprite" parent="."]
 visible = false

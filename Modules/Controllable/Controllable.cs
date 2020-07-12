@@ -20,6 +20,8 @@ namespace ArrogantCrawler.Modules.Controllable
         [Export] public bool InControl;
         [Export] public bool IsPlayer;
         [Export] public float KnockBack = 150;
+        [Export] public int Damage = 1;
+        [Export] public int Health = 2;
 
         public override void _Ready()
         {
