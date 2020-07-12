@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://TileMaps/Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Modules/DraggableCamera/DraggableCamera.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/GameManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Modules/Exit/Exit.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Modules/ExitButton/ExitButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Lv3.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ControllableTutorial"
@@ -236,11 +237,11 @@ tracks/13/keys = {
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
-region = Rect2( 80, 0, 16, 16 )
+region = Rect2( 64, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
-region = Rect2( 64, 0, 16, 16 )
+region = Rect2( 80, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 5 )
@@ -250,12 +251,12 @@ region = Rect2( 16, 0, 16, 16 )
 animations = [ {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "a3",
+"name": "a2",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "a2",
+"name": "a3",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ) ],
@@ -280,6 +281,7 @@ position = Vector2( 392, 88 )
 
 [node name="Exit" parent="." instance=ExtResource( 8 )]
 position = Vector2( 440, 88 )
+NextScene = ExtResource( 10 )
 
 [node name="Crawler" parent="." instance=ExtResource( 3 )]
 position = Vector2( 80, 96 )

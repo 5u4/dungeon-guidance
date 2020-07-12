@@ -51,10 +51,11 @@ namespace ArrogantCrawler.Scenes
         {
             _camera.Target = null;
             _camera.CanMove = true;
+            SetAllControllableEnabled(true);
+            if (CurrentControllable == null) return;
             CurrentControllable.InControl = false;
             CurrentControllable.ControlIndicator.Hide();
             CurrentControllable = null;
-            SetAllControllableEnabled(true);
         }
 
         public void SetMouseMode(Input.CursorShape shape)

@@ -12,6 +12,7 @@ namespace ArrogantCrawler.Modules.Controllable
         private float _attackRangeCollisionOriginalX;
 
         public bool IsAttacking { get; private set; }
+        [Export] public bool AlwaysAttacking;
 
         public override void _Ready()
         {
@@ -20,7 +21,7 @@ namespace ArrogantCrawler.Modules.Controllable
             _attackRange = GetNode<Area2D>("AttackRange");
 
             _attackRangeCollision = _attackRange.GetNodeOrNull<CollisionShape2D>("CollisionShape2D");
-            if (_attackRangeCollision == null) return;
+            if (_attackRangeCollision == null || AlwaysAttacking) return;
             _attackRangeCollision.Disabled = true;
             _attackRangeCollisionOriginalX = _attackRangeCollision.Position.x;
         }
@@ -33,7 +34,7 @@ namespace ArrogantCrawler.Modules.Controllable
 
         public override void _PhysicsProcess(float delta)
         {
-            if (_controllable.ActionLock.IsLocked) return;
+            if (_controllable.ActionLock.IsLocked || AlwaysAttacking) return;
             ScanForAttack();
         }
 
