@@ -1,6 +1,6 @@
 using Godot;
 
-namespace ArrogantCrawler.Modules.Pickable
+namespace DungeonGuidance.Modules.Pickable
 {
     public class Pickable : Area2D
     {

@@ -1,9 +1,9 @@
-using ArrogantCrawler.Modules.Controllable;
-using ArrogantCrawler.Modules.DraggableCamera;
-using ArrogantCrawler.Modules.Pickable;
+using DungeonGuidance.Modules.Controllable;
+using DungeonGuidance.Modules.DraggableCamera;
+using DungeonGuidance.Modules.Pickable;
 using Godot;
 
-namespace ArrogantCrawler.Scenes
+namespace DungeonGuidance.Scenes
 {
     public class Lv2ControlTutorial : Node2D
     {

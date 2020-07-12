@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace ArrogantCrawler.Modules.Controllable
+namespace DungeonGuidance.Modules.Controllable
 {
     public class Attack : Node2D // TODO: Rename AttackController
     {

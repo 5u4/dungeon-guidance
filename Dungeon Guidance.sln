@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrogant Crawler", "Arrogant Crawler.csproj", "{D19D30B4-D968-48DE-8097-30D1D153A263}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dungeon Guidance", "Dungeon Guidance.csproj", "{D19D30B4-D968-48DE-8097-30D1D153A263}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

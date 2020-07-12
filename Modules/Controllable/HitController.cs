@@ -1,7 +1,7 @@
-using ArrogantCrawler.Scenes;
+using DungeonGuidance.Scenes;
 using Godot;
 
-namespace ArrogantCrawler.Modules.Controllable
+namespace DungeonGuidance.Modules.Controllable
 {
     public class HitController : Node2D
     {

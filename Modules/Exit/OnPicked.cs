@@ -1,6 +1,6 @@
 using Godot;
 
-namespace ArrogantCrawler.Modules.Exit
+namespace DungeonGuidance.Modules.Exit
 {
     public class OnPicked : Node2D
     {

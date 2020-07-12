@@ -1,6 +1,6 @@
 using Godot;
 
-namespace ArrogantCrawler.Scenes
+namespace DungeonGuidance.Scenes
 {
     public class Starting : Node2D
     {

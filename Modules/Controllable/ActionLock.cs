@@ -1,6 +1,6 @@
 using Godot;
 
-namespace ArrogantCrawler.Modules.Controllable
+namespace DungeonGuidance.Modules.Controllable
 {
     public delegate void LockTimeoutCallback();
 

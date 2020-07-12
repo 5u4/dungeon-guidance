@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace ArrogantCrawler.Scenes
+namespace DungeonGuidance.Scenes
 {
     public class CameraShake : Node2D
     {

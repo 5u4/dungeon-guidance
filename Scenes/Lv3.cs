@@ -1,8 +1,8 @@
-using ArrogantCrawler.Modules.Controllable;
-using ArrogantCrawler.Modules.Pickable;
+using DungeonGuidance.Modules.Controllable;
+using DungeonGuidance.Modules.Pickable;
 using Godot;
 
-namespace ArrogantCrawler.Scenes
+namespace DungeonGuidance.Scenes
 {
     public class Lv3 : Node2D
     {

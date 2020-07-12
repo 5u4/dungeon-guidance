@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using ArrogantCrawler.Modules.Controllable;
-using ArrogantCrawler.Modules.DraggableCamera;
+using DungeonGuidance.Modules.Controllable;
+using DungeonGuidance.Modules.DraggableCamera;
 using Godot;
 
-namespace ArrogantCrawler.Scenes
+namespace DungeonGuidance.Scenes
 {
     public class GameManager : Node2D
     {

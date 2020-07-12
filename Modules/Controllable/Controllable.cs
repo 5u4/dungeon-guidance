@@ -1,6 +1,6 @@
 using Godot;
 
-namespace ArrogantCrawler.Modules.Controllable
+namespace DungeonGuidance.Modules.Controllable
 {
     public class Controllable : KinematicBody2D
     {

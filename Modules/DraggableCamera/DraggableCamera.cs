@@ -1,7 +1,7 @@
-using ArrogantCrawler.Scenes;
+using DungeonGuidance.Scenes;
 using Godot;
 
-namespace ArrogantCrawler.Modules.DraggableCamera
+namespace DungeonGuidance.Modules.DraggableCamera
 {
     public class DraggableCamera : Camera2D
     {

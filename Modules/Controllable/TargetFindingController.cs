@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace ArrogantCrawler.Modules.Controllable
+namespace DungeonGuidance.Modules.Controllable
 {
     public class TargetFindingController : Node2D
     {
