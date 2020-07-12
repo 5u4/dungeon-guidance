@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Modules/Controllable/Controllable.cs" type="Script" id=1]
 [ext_resource path="res://Modules/Controllable/ControllableSprite.cs" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/Cloud_Poof (16 x 16).png" type="Texture" id=10]
 [ext_resource path="res://Assets/control-indicator.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Hurt.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Health_Indicator_Black_Outline (8 x 8).png" type="Texture" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -37,6 +38,27 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 13 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ SubResource( 25 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 26 ) ],
+"loop": true,
+"name": "off",
 "speed": 5.0
 } ]
 
@@ -146,6 +168,82 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=28]
+resource_name = "Hurt"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Heart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.25, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16 ), Vector2( 4, -16 ), Vector2( -4, -16 ), Vector2( 4, -16 ), Vector2( 0, -16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Heart2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.25, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16 ), Vector2( 4, -16 ), Vector2( -4, -16 ), Vector2( 4, -16 ), Vector2( 0, -16 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Heart:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Heart2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Heart:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Heart2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 1
@@ -188,11 +286,26 @@ script = ExtResource( 5 )
 [node name="ControlIndicator" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 script = ExtResource( 2 )
+
+[node name="Heart" type="AnimatedSprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -16 )
+frames = SubResource( 27 )
+animation = "on"
+offset = Vector2( -4, 0 )
+
+[node name="Heart2" type="AnimatedSprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -16 )
+frames = SubResource( 27 )
+animation = "on"
+offset = Vector2( 3, 0 )
 
 [node name="HitController" type="Node2D" parent="."]
 script = ExtResource( 6 )
@@ -222,6 +335,9 @@ scale = Vector2( 1e-05, 1e-05 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ShowEmoji = SubResource( 19 )
+
+[node name="HeartAnimation" type="AnimationPlayer" parent="."]
+anims/Hurt = SubResource( 28 )
 
 [node name="ActionLock" type="Timer" parent="."]
 script = ExtResource( 4 )

@@ -14,6 +14,7 @@ namespace DungeonGuidance.Modules.Controllable
         public DeathHandler DeathHandler;
         public AnimatedSprite ControlIndicator;
         public AudioStreamPlayer2D HurtAudio;
+        public AnimationPlayer HeartAnimation;
 
         [Export] public Vector2 Velocity = Vector2.Zero;
         [Export] public Vector2 Impulse = Vector2.Zero;
@@ -38,6 +39,7 @@ namespace DungeonGuidance.Modules.Controllable
             DeathHandler = GetNode<DeathHandler>("DeathHandler");
             ControlIndicator = GetNode<AnimatedSprite>("ControlIndicator");
             HurtAudio = GetNode<AudioStreamPlayer2D>("HurtAudio");
+            HeartAnimation = GetNode<AnimationPlayer>("HeartAnimation");
 
             ConnectChildrenSignals(this);
         }

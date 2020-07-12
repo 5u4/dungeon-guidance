@@ -8,12 +8,16 @@ namespace DungeonGuidance.Modules.Controllable
         private GameManager _gameManager;
         private Controllable _controllable;
         private Particles2D _damageIndicator;
+        private AnimatedSprite _h1;
+        private AnimatedSprite _h2;
 
         public override void _Ready()
         {
             _gameManager = GetNodeOrNull<GameManager>("../../GameManager");
             _controllable = GetNode<Controllable>("..");
             _damageIndicator = GetNode<Particles2D>("DamageIndicator");
+            _h1 = GetNode<AnimatedSprite>("../Heart");
+            _h2 = GetNode<AnimatedSprite>("../Heart2");
         }
 
         public void Hit(Controllable from)
@@ -24,7 +28,28 @@ namespace DungeonGuidance.Modules.Controllable
             _damageIndicator.Amount = from.Damage;
             _damageIndicator.Emitting = true;
             TakeDamage(from);
+            HandleHeartIndicate();
             HealthCheck();
+        }
+
+        private void HandleHeartIndicate()
+        {
+            switch (_controllable.Health)
+            {
+                case 2:
+                    _h1.Animation = "on";
+                    _h2.Animation = "on";
+                    break;
+                case 1:
+                    _h1.Animation = "on";
+                    _h2.Animation = "off";
+                    break;
+                default:
+                    _h1.Animation = "off";
+                    _h2.Animation = "off";
+                    break;
+            }
+            _controllable.HeartAnimation.Play("Hurt");
         }
 
         private void TakeDamage(Controllable from)
