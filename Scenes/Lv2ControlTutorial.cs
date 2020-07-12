@@ -19,7 +19,9 @@ namespace ArrogantCrawler.Scenes
 
         public override void _Input(InputEvent @event)
         {
-            if (@event is InputEventKey key && key.IsPressed()) _animationPlayer.PlaybackSpeed = 1;
+            if ((!(@event is InputEventKey key) || !key.IsPressed()) &&
+                (!(@event is InputEventMouseButton mouse) || !mouse.Pressed)) return;
+            _animationPlayer.PlaybackSpeed = 1;
         }
     }
 }

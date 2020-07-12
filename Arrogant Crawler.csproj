@@ -68,6 +68,7 @@
     <Compile Include="Modules\Exit\OnPicked.cs" />
     <Compile Include="Modules\Pickable\Pickable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\GameManager.cs" />
     <Compile Include="Scenes\Lv1MovementTutorial.cs" />
     <Compile Include="Scenes\Lv2ControlTutorial.cs" />
   </ItemGroup>

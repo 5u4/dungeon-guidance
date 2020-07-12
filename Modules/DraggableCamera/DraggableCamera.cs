@@ -1,3 +1,4 @@
+using ArrogantCrawler.Scenes;
 using Godot;
 
 namespace ArrogantCrawler.Modules.DraggableCamera
@@ -5,12 +6,14 @@ namespace ArrogantCrawler.Modules.DraggableCamera
     public class DraggableCamera : Camera2D
     {
         private TileMap _tileMap;
+        private GameManager _gameManager;
 
         [Export] public Node2D Target;
         [Export] public bool CanMove;
 
         public override void _Ready()
         {
+            _gameManager = GetNodeOrNull<GameManager>("../GameManager");
             _tileMap = GetNode<TileMap>("../Dungeon");
             LimitCamera();
         }
@@ -18,13 +21,7 @@ namespace ArrogantCrawler.Modules.DraggableCamera
         public override void _Input(InputEvent @event)
         {
             if (!CanMove) return;
-            if (!(@event is InputEventMouseMotion drag) || !(drag.Pressure > 0) ||
-                !Input.IsActionPressed("ui_drag")) return;
-            var margin = GetViewportRect().Size * Zoom / 2;
-            var target = Position - drag.Relative;
-            target.x = Mathf.Clamp(target.x, LimitLeft + margin.x, LimitRight - margin.x);
-            target.y = Mathf.Clamp(target.y, LimitTop + margin.y, LimitBottom - margin.y);
-            Position = target;
+            HandleDrag(@event);
         }
 
         public override void _Process(float delta)
@@ -33,14 +30,25 @@ namespace ArrogantCrawler.Modules.DraggableCamera
             Position = Target.Position;
         }
 
-        public void ZoomOut()
+        private void HandleDrag(InputEvent @event)
         {
-            Zoom = new Vector2(1.5f, 1.5f);
-        }
-
-        public void ZoomIn()
-        {
-            Zoom = new Vector2(1, 1);
+            switch (@event)
+            {
+                case InputEventMouseButton click when click.Pressed && Input.IsActionPressed("ui_drag"):
+                    _gameManager?.SetMouseMode(Input.CursorShape.Drag);
+                    break;
+                case InputEventMouseMotion drag when drag.Pressure > 0 && Input.IsActionPressed("ui_drag"):
+                    _gameManager?.SetMouseMode(Input.CursorShape.Move);
+                    var margin = GetViewportRect().Size * Zoom / 2;
+                    var target = Position - drag.Relative;
+                    target.x = Mathf.Clamp(target.x, LimitLeft + margin.x, LimitRight - margin.x);
+                    target.y = Mathf.Clamp(target.y, LimitTop + margin.y, LimitBottom - margin.y);
+                    Position = target;
+                    break;
+                default:
+                    _gameManager?.SetMouseMode(Input.CursorShape.Arrow);
+                    return;
+            }
         }
 
         private void LimitCamera()
