@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Modules/Controllable/Controllable.cs" type="Script" id=1]
 [ext_resource path="res://Modules/Controllable/ControllableSprite.cs" type="Script" id=2]
@@ -11,91 +11,91 @@
 [ext_resource path="res://Modules/Controllable/DeathHandler.cs" type="Script" id=9]
 [ext_resource path="res://Assets/Cloud_Poof (16 x 16).png" type="Texture" id=10]
 [ext_resource path="res://Assets/control-indicator.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Hurt.wav" type="AudioStream" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 11 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 11 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 11 )
 region = Rect2( 48, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 11 )
 region = Rect2( 64, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=26]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Curve" id=9]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 0.17027 ), 0.0, 1.61345, 0, 0, Vector2( 0.490196, 0.524816 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.233643, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=10]
-curve = SubResource( 9 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=9]
 flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
 gravity = Vector3( 0, 98, 0 )
 initial_velocity = 30.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 10 )
+scale_curve = SubResource( 8 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 10 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 10 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 10 )
 region = Rect2( 48, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 10 )
 region = Rect2( 64, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 10 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 10 )
 region = Rect2( 96, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 10 )
 region = Rect2( 112, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=2]
-resource_name = "ShowEmoji"
+[sub_resource type="Animation" id=19]
 length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Emoji:scale")
@@ -146,7 +146,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 1
 border_width_top = 1
@@ -159,13 +159,13 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=21]
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=22]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=23]
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=24]
 
 [node name="Controllable" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -187,8 +187,8 @@ script = ExtResource( 5 )
 
 [node name="ControlIndicator" type="AnimatedSprite" parent="."]
 visible = false
-frames = SubResource( 26 )
-frame = 3
+frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -203,7 +203,7 @@ lifetime = 0.6
 one_shot = true
 explosiveness = 0.65
 local_coords = false
-process_material = SubResource( 8 )
+process_material = SubResource( 9 )
 texture = ExtResource( 8 )
 
 [node name="DeathHandler" type="Node2D" parent="."]
@@ -213,7 +213,7 @@ script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="DeathHandler"]
 visible = false
-frames = SubResource( 11 )
+frames = SubResource( 18 )
 
 [node name="Emoji" type="AnimatedSprite" parent="."]
 visible = false
@@ -221,7 +221,7 @@ modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 1e-05, 1e-05 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ShowEmoji = SubResource( 2 )
+anims/ShowEmoji = SubResource( 19 )
 
 [node name="ActionLock" type="Timer" parent="."]
 script = ExtResource( 4 )
@@ -235,11 +235,11 @@ margin_bottom = 11.0
 rect_scale = Vector2( 1, 0.85 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
 button_mask = 2
 enabled_focus_mode = 0
 expand_icon = true
@@ -247,3 +247,6 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )

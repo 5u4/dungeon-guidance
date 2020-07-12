@@ -19,6 +19,7 @@ namespace ArrogantCrawler.Modules.Controllable
         public void Hit(Controllable from)
         {
             HandleKnockBack(from);
+            _controllable.HurtAudio.Play();
             _gameManager?.CameraShake();
             _damageIndicator.Amount = from.Damage;
             _damageIndicator.Emitting = true;

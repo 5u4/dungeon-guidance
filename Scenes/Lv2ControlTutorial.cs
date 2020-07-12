@@ -40,7 +40,8 @@ namespace ArrogantCrawler.Scenes
 
         private void OnExitButtonPickedUp(Pickable pickable, Node by)
         {
-            if (pickable.Type != "ExitButton" || !PlayerPickable(pickable, by)) return;;
+            if (pickable.Type != "ExitButton" || !PlayerPickable(pickable, by)) return;
+            pickable.PickedUpAudio.Play();
             pickable.Sprite.Play("picked");
             pickable.PickedUp = true;
             _exit.Show();
@@ -49,7 +50,8 @@ namespace ArrogantCrawler.Scenes
 
         private void OnExitPickedUp(Pickable pickable, Node by)
         {
-            if (pickable.Type != "Exit" || !PlayerPickable(pickable, by)) return;;
+            if (pickable.Type != "Exit" || !PlayerPickable(pickable, by)) return;
+            pickable.PickedUpAudio.Play();
             GetTree().ChangeSceneTo(pickable.NextScene);
         }
 

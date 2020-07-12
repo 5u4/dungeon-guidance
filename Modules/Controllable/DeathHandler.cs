@@ -20,6 +20,7 @@ namespace ArrogantCrawler.Modules.Controllable
             _sprite.Play();
             _controllable.Sprite.Hide();
             _controllable.GetNode<CollisionShape2D>("CollisionShape2D").QueueFree();
+            _controllable.ControlController.Disabled = true;
         }
 
         private void OnAnimatedSpriteFinished()

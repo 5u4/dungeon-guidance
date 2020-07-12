@@ -9,6 +9,7 @@ namespace ArrogantCrawler.Modules.Pickable
 
         public AnimatedSprite Sprite;
         public bool PickedUp;
+        public AudioStreamPlayer2D PickedUpAudio;
 
         [Export] public string Type;
         [Export] public PackedScene NextScene;
@@ -17,6 +18,7 @@ namespace ArrogantCrawler.Modules.Pickable
         {
             Sprite = GetNode<AnimatedSprite>("AnimatedSprite");
             Connect("body_entered", this, nameof(OnBodyEnterPickable));
+            PickedUpAudio = GetNodeOrNull<AudioStreamPlayer2D>("PickedUpAudio");
         }
 
         public void OnBodyEnterPickable(Node body)
