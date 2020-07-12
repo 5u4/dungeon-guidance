@@ -328,8 +328,8 @@ __meta__ = {
 }
 
 [node name="FastForward" type="Label" parent="CanvasLayer"]
-margin_left = 176.0
-margin_right = 256.0
+margin_left = 168.0
+margin_right = 248.0
 margin_bottom = 13.0
 text = "P: Fastforward"
 align = 2
