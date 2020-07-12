@@ -22,6 +22,21 @@ namespace ArrogantCrawler.Modules.Controllable
             _gameManager?.CameraShake();
             _damageIndicator.Amount = from.Damage;
             _damageIndicator.Emitting = true;
+            TakeDamage(from);
+            HealthCheck();
+        }
+
+        private void TakeDamage(Controllable from)
+        {
+            _controllable.Health -= from.Damage;
+        }
+
+        private void HealthCheck()
+        {
+            if (_controllable.Health > 0) return;
+            _controllable.ActionLock.Lock();
+            _controllable.DeathHandler.HandleDeath();
+            _gameManager?.LeaveControl();
         }
 
         private void HandleKnockBack(Controllable from)

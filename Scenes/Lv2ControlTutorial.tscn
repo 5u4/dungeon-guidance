@@ -279,7 +279,7 @@ position = Vector2( 80, 72 )
 position = Vector2( 392, 88 )
 
 [node name="Exit" parent="." instance=ExtResource( 8 )]
-position = Vector2( 472, 88 )
+position = Vector2( 440, 88 )
 
 [node name="Crawler" parent="." instance=ExtResource( 3 )]
 position = Vector2( 80, 96 )

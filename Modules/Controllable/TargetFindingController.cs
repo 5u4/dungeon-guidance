@@ -18,10 +18,10 @@ namespace ArrogantCrawler.Modules.Controllable
 
         public override void _PhysicsProcess(float delta)
         {
+            Move(delta);
             if (_controllable.ActionLock.IsLocked) return;
             if (_controllable.InControl) HandleActiveMovement();
             else HandleAutoMovement();
-            Move(delta);
         }
 
         public void SafeConnect()
