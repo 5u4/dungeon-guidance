@@ -9,6 +9,7 @@ namespace ArrogantCrawler.Modules.Controllable
         public Attack AttackController;
         public TargetFindingController TargetFindingController;
         public HitController HitController;
+        public ControlController ControlController;
 
         [Export] public Vector2 Velocity = Vector2.Zero;
         [Export] public float MoveSpeed = 50;
@@ -23,6 +24,7 @@ namespace ArrogantCrawler.Modules.Controllable
             AttackController = GetNode<Attack>("Attack");
             TargetFindingController = GetNode<TargetFindingController>("TargetFinding");
             HitController = GetNode<HitController>("HitController");
+            ControlController = GetNode<ControlController>("Control");
 
             ConnectChildrenSignals(this);
         }

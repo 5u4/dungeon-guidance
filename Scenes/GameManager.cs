@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using ArrogantCrawler.Modules.Controllable;
 using Godot;
 
 namespace ArrogantCrawler.Scenes
@@ -16,6 +18,7 @@ namespace ArrogantCrawler.Scenes
             _move = ResourceLoader.Load("res://Assets/cursor-move.png");
             _drag = ResourceLoader.Load("res://Assets/cursor-drag.png");
             _pointingHand = ResourceLoader.Load("res://Assets/cursor-pointinghand.png");
+            Input.SetCustomMouseCursor(_pointingHand, Input.CursorShape.PointingHand);
             SetMouseMode(Input.CursorShape.Arrow);
         }
 
@@ -64,6 +67,23 @@ namespace ArrogantCrawler.Scenes
                 default:
                     throw new ArgumentOutOfRangeException(nameof(shape), shape, null);
             }
+        }
+
+        public List<Controllable> GetControllables()
+        {
+            var controllables = new List<Controllable>();
+            foreach (var node in GetNode("..").GetChildren())
+            {
+                if (!(node is Controllable controllable)) continue;
+                controllables.Add(controllable);
+            }
+
+            return controllables;
+        }
+
+        public void SetAllControllableEnabled(bool enabled)
+        {
+            GetControllables().ForEach(controllable => controllable.ControlController.Visible = enabled);
         }
     }
 }

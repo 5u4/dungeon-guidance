@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://TileMaps/Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Modules/DraggableCamera/DraggableCamera.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Assets/Speech_Emotes (16 x 16).png" type="Texture" id=5]
 [ext_resource path="res://Modules/Goblin/Goblin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/GameManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Modules/Exit/Exit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Modules/ExitButton/ExitButton.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Scene"
@@ -153,8 +155,8 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 4.2, 5, 5.3, 6.1, 7.5, 8.3, 8.7, 9.5, 9.9, 10.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "", "Ops! You lost the character control.", "", "Maybe... There are some other creatures you can control.", "", "Oh! Look, an innocent goblin!", "", "Hold RIGHT MOUSE to drag map.
-LEFT MOUSE CLICK to take control.", "", "\"Guide\" the hero to the next level.", "" ]
+"values": [ "", "Ops! You lost the character control.", "", "Maybe... There are some other creatures you can control.", "", "Oh! Look, an innocent goblin!", "", "Hold LEFT MOUSE to drag map.
+RIGHT MOUSE CLICK to take control.", "", "\"Guide\" the hero to the next level.", "" ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("CanvasLayer/Narrator:percent_visible")
@@ -210,6 +212,12 @@ tile_data = PoolIntArray( 0, 17, 0, 1, 15, 0, 2, 15, 0, 3, 15, 0, 4, 15, 0, 5, 1
 [node name="DraggableCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 280, 72 )
 
+[node name="ExitButton" parent="." instance=ExtResource( 9 )]
+position = Vector2( 392, 88 )
+
+[node name="Exit" parent="." instance=ExtResource( 8 )]
+position = Vector2( 472, 88 )
+
 [node name="Crawler" parent="." instance=ExtResource( 3 )]
 position = Vector2( 80, 96 )
 
@@ -244,8 +252,8 @@ margin_left = 16.0
 margin_top = 112.0
 margin_right = 240.0
 margin_bottom = 144.0
-text = "Hold RIGHT MOUSE to drag map.
-Hover and LEFT MOUSE to take control."
+text = "Hold LEFT MOUSE to drag map.
+RIGHT MOUSE CLICK to take control."
 align = 1
 valign = 1
 autowrap = true
