@@ -17,7 +17,8 @@ namespace ArrogantCrawler.Modules.Controllable
 
         private void OnControlPressed()
         {
-            if (_controllable.IsPlayer) return; // TODO: Show emoji
+            _controllable.AnimationPlayer.Play("ShowEmoji");
+            if (_controllable.IsPlayer) return;
             EmitSignal(nameof(OnControl), _controllable);
         }
     }
