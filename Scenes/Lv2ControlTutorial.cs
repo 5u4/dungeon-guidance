@@ -8,7 +8,7 @@ namespace ArrogantCrawler.Scenes
     public class Lv2ControlTutorial : Node2D
     {
         private DraggableCamera _camera;
-        private Controllable _controllable;
+        private Controllable _goblin;
         private AnimationPlayer _animationPlayer;
         private GameManager _gameManager;
         private Pickable _exitButton;
@@ -17,7 +17,7 @@ namespace ArrogantCrawler.Scenes
         public override void _Ready()
         {
             _camera = GetNode<DraggableCamera>("DraggableCamera");
-            _controllable = GetNode<Controllable>("Crawler");
+            _goblin = GetNode<Controllable>("Goblin");
             _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
             _animationPlayer.Connect("animation_finished", this, nameof(OnAnimationFinished));
             _gameManager = GetNode<GameManager>("GameManager");
@@ -66,12 +66,17 @@ namespace ArrogantCrawler.Scenes
         private void OnControl(Controllable controllable)
         {
             _gameManager.SetAllControllableEnabled(false);
+            _camera.Target = controllable;
+            _camera.CanMove = false;
+            _animationPlayer.Play("ControllableTutorial");
         }
 
         private void OnAnimationFinished(string animationName)
         {
             if (animationName == "Scene")
                 _gameManager.SetAllControllableEnabled(true);
+            else if (animationName == "ControllableTutorial")
+                _goblin.InControl = true;
         }
     }
 }
