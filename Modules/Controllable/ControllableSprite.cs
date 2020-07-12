@@ -6,6 +6,7 @@ namespace ArrogantCrawler.Modules.Controllable
     public class ControllableSprite : AnimatedSprite
     {
         private Controllable _controllable;
+        private readonly Vector2 _impulseTolerance = new Vector2(10, 10);
 
         public override void _Ready()
         {
@@ -27,6 +28,7 @@ namespace ArrogantCrawler.Modules.Controllable
 
         private string GetAnimationState()
         {
+            if (_controllable.Impulse.Abs() > _impulseTolerance) return "hurt";
             if (_controllable.AttackController.IsAttacking) return "attack";
             return _controllable.Velocity.Equals(Vector2.Zero) ? "idle" : "move";
         }

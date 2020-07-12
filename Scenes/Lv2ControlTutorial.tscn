@@ -206,7 +206,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 4.2, 5, 5.3, 6.1, 7.5, 8.3, 8.7, 9.5, 9.9, 10.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "", "Ops! You lost the character control.", "", "Maybe... There are some other creatures you can control.", "", "Oh! Look, an innocent goblin!", "", "Hold LEFT MOUSE to drag map.
+"values": [ "", "Ops! You lost the character control.", "", "Maybe... There are some other creatures you can control.", "", "Oh! Look, an innocent bush!!", "", "Hold LEFT MOUSE to drag map.
 RIGHT MOUSE CLICK to take control.", "", "\"Guide\" the hero to the next level.", "" ]
 }
 tracks/12/type = "value"
