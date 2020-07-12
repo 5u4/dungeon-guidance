@@ -4,14 +4,13 @@ namespace ArrogantCrawler.Modules.Controllable
 {
     public class Controllable : KinematicBody2D
     {
-        public Vector2 Velocity = Vector2.Zero;
-
         public ActionLock ActionLock;
         public AnimatedSprite Sprite;
         public Attack AttackController;
         public TargetFindingController TargetFindingController;
         public HitController HitController;
 
+        [Export] public Vector2 Velocity = Vector2.Zero;
         [Export] public float MoveSpeed = 50;
         [Export] public float SightRadius = 50;
         [Export] public bool InControl;
