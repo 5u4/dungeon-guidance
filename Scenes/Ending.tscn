@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://TileMaps/Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/BushIdle (16 x 16).png" type="Texture" id=2]
 [ext_resource path="res://Assets/pokeyIdle (16 x 16).png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Starting.cs" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -41,8 +40,7 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[node name="Starting" type="Node2D"]
-script = ExtResource( 4 )
+[node name="Ending" type="Node2D"]
 
 [node name="Dungeon" parent="." instance=ExtResource( 1 )]
 tile_data = PoolIntArray( 7, 17, 0, 8, 15, 0, 9, 15, 0, 10, 15, 0, 11, 15, 0, 12, 15, 0, 13, 18, 0, 65542, 17, 0, 65543, 25, 0, 65544, 16, 0, 65545, 16, 0, 65546, 16, 0, 65547, 16, 0, 65548, 16, 0, 65549, 19, 0, 131075, 17, 0, 131076, 15, 0, 131077, 15, 0, 131078, 25, 0, 131079, 16, 0, 131080, 3, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 19, 0, 196611, 20, 0, 196612, 16, 0, 196613, 16, 0, 196614, 16, 0, 196615, 3, 0, 196616, 2, 0, 196617, 4, 0, 196618, 4, 0, 196619, 4, 0, 196620, 4, 0, 196621, 19, 0, 262147, 20, 0, 262148, 3, 0, 262149, 0, 0, 262150, 0, 0, 262151, 2, 0, 262152, 4, 0, 262153, 4, 0, 262154, 4, 0, 262155, 4, 0, 262156, 4, 0, 262157, 19, 0, 327683, 20, 0, 327684, 1, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0, 327690, 4, 0, 327691, 4, 0, 327692, 28, 0, 327693, 21, 0, 393219, 23, 0, 393220, 26, 0, 393221, 4, 0, 393222, 4, 0, 393223, 4, 0, 393224, 4, 0, 393225, 4, 0, 393226, 4, 0, 393227, 28, 0, 393228, 21, 0, 458756, 23, 0, 458757, 22, 0, 458758, 22, 0, 458759, 22, 0, 458760, 22, 0, 458761, 22, 0, 458762, 22, 0, 458763, 21, 0 )
@@ -53,7 +51,7 @@ tile_data = PoolIntArray( 7, 17, 0, 8, 15, 0, 9, 15, 0, 10, 15, 0, 11, 15, 0, 12
 margin_top = 32.0
 margin_right = 256.0
 margin_bottom = 56.0
-text = "Dungeon Guidance"
+text = "Thank you for playing!"
 align = 1
 valign = 1
 __meta__ = {
@@ -63,7 +61,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 96, 88 )
 frames = SubResource( 4 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]

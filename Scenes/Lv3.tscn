@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://TileMaps/Dungeon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/GameManager.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Modules/Exit/Exit.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Modules/ExitButton/ExitButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Modules/Pokey/Pokey.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Ending.tscn" type="PackedScene" id=11]
 
 [node name="Lv3" type="Node2D"]
 script = ExtResource( 6 )
@@ -25,6 +26,7 @@ CanMove = true
 
 [node name="Exit" parent="." instance=ExtResource( 8 )]
 position = Vector2( 456, 120 )
+NextScene = ExtResource( 11 )
 
 [node name="ExitButton" parent="." instance=ExtResource( 9 )]
 position = Vector2( 216, 288 )
