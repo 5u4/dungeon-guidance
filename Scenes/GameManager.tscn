@@ -28,7 +28,7 @@ visible = false
 margin_top = 40.0
 margin_right = 256.0
 margin_bottom = 104.0
-text = "Ops, the hero dead.
+text = "Ops, the hero died.
 Press R to restart."
 align = 1
 valign = 1
