@@ -19,6 +19,10 @@ config/name="Arrogant Crawler"
 run/main_scene="res://Scenes/Lv1MovementTutorial.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+BackgroundMusic="*res://Scenes/BackgroundMusic.tscn"
+
 [display]
 
 window/size/width=256
