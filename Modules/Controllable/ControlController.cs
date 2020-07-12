@@ -18,6 +18,7 @@ namespace DungeonGuidance.Modules.Controllable
         private void OnControlPressed()
         {
             _controllable.AnimationPlayer.Play("ShowEmoji");
+            _controllable.HeartAnimation.Play("Show");
             if (_controllable.IsPlayer) return;
             EmitSignal(nameof(OnControl), _controllable);
         }

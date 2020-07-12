@@ -6,14 +6,14 @@
 [ext_resource path="res://Assets/spikeyRunning (16 x 16).png" type="Texture" id=4]
 [ext_resource path="res://Assets/Speech_Emotes (16 x 16).png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 8 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
 region = Rect2( 16, 0, 16, 16 )
 
@@ -45,9 +45,9 @@ region = Rect2( 64, 0, 16, 16 )
 atlas = ExtResource( 4 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
@@ -76,21 +76,18 @@ animations = [ {
 } ]
 
 [node name="Spikey" instance=ExtResource( 1 )]
-scale = Vector2( -1, 1 )
 
 [node name="Attack" parent="." index="1"]
 AlwaysAttacking = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/AttackRange" index="0"]
 position = Vector2( 0, -8 )
-shape = SubResource( 11 )
-
-[node name="ControlIndicator" parent="." index="3"]
-frame = 1
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="4"]
-frames = SubResource( 3 )
+scale = Vector2( -1, 1 )
+frames = SubResource( 11 )
 animation = "idle"
 
-[node name="Emoji" parent="." index="7"]
+[node name="Emoji" parent="." index="9"]
 frames = SubResource( 13 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Modules/Controllable/Controllable.cs" type="Script" id=1]
 [ext_resource path="res://Modules/Controllable/ControllableSprite.cs" type="Script" id=2]
@@ -41,83 +41,83 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 13 )
 region = Rect2( 0, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 13 )
 region = Rect2( 8, 0, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=27]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 25 ) ],
+"frames": [ SubResource( 7 ) ],
 "loop": true,
 "name": "on",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 26 ) ],
+"frames": [ SubResource( 8 ) ],
 "loop": true,
 "name": "off",
 "speed": 5.0
 } ]
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 0.17027 ), 0.0, 1.61345, 0, 0, Vector2( 0.490196, 0.524816 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.233643, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=12]
 flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
 gravity = Vector3( 0, 98, 0 )
 initial_velocity = 30.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 8 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 10 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 10 )
-region = Rect2( 32, 0, 16, 16 )
+scale_curve = SubResource( 11 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 10 )
-region = Rect2( 48, 0, 16, 16 )
+region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 10 )
-region = Rect2( 64, 0, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 10 )
-region = Rect2( 80, 0, 16, 16 )
+region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 10 )
-region = Rect2( 96, 0, 16, 16 )
+region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 10 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 10 )
 region = Rect2( 112, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="SpriteFrames" id=21]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=22]
 length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Emoji:scale")
@@ -168,7 +168,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=23]
 resource_name = "Hurt"
 step = 0.05
 tracks/0/type = "value"
@@ -244,7 +244,82 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="Animation" id=24]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Heart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Heart:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Heart2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Heart2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Heart:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 14 ), Vector2( 0, 14 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Heart2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 14 ), Vector2( 0, 14 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=25]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 1
 border_width_top = 1
@@ -257,13 +332,13 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id=21]
+[sub_resource type="StyleBoxEmpty" id=26]
 
-[sub_resource type="StyleBoxEmpty" id=22]
+[sub_resource type="StyleBoxEmpty" id=27]
 
-[sub_resource type="StyleBoxEmpty" id=23]
+[sub_resource type="StyleBoxEmpty" id=28]
 
-[sub_resource type="StyleBoxEmpty" id=24]
+[sub_resource type="StyleBoxEmpty" id=29]
 
 [node name="Controllable" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -286,24 +361,23 @@ script = ExtResource( 5 )
 [node name="ControlIndicator" type="AnimatedSprite" parent="."]
 visible = false
 frames = SubResource( 6 )
+frame = 3
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 script = ExtResource( 2 )
 
 [node name="Heart" type="AnimatedSprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -16 )
-frames = SubResource( 27 )
+position = Vector2( 0, 14 )
+frames = SubResource( 9 )
 animation = "on"
 offset = Vector2( -4, 0 )
 
 [node name="Heart2" type="AnimatedSprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -16 )
-frames = SubResource( 27 )
+position = Vector2( 0, 14 )
+frames = SubResource( 9 )
 animation = "on"
 offset = Vector2( 3, 0 )
 
@@ -316,7 +390,7 @@ lifetime = 0.6
 one_shot = true
 explosiveness = 0.65
 local_coords = false
-process_material = SubResource( 9 )
+process_material = SubResource( 12 )
 texture = ExtResource( 8 )
 
 [node name="DeathHandler" type="Node2D" parent="."]
@@ -326,7 +400,7 @@ script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="DeathHandler"]
 visible = false
-frames = SubResource( 18 )
+frames = SubResource( 21 )
 
 [node name="Emoji" type="AnimatedSprite" parent="."]
 visible = false
@@ -334,10 +408,11 @@ modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 1e-05, 1e-05 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ShowEmoji = SubResource( 19 )
+anims/ShowEmoji = SubResource( 22 )
 
 [node name="HeartAnimation" type="AnimationPlayer" parent="."]
-anims/Hurt = SubResource( 28 )
+anims/Hurt = SubResource( 23 )
+anims/Show = SubResource( 24 )
 
 [node name="ActionLock" type="Timer" parent="."]
 script = ExtResource( 4 )
@@ -351,11 +426,11 @@ margin_bottom = 11.0
 rect_scale = Vector2( 1, 0.85 )
 focus_mode = 0
 mouse_default_cursor_shape = 2
-custom_styles/hover = SubResource( 20 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 22 )
-custom_styles/disabled = SubResource( 23 )
-custom_styles/normal = SubResource( 24 )
+custom_styles/hover = SubResource( 25 )
+custom_styles/pressed = SubResource( 26 )
+custom_styles/focus = SubResource( 27 )
+custom_styles/disabled = SubResource( 28 )
+custom_styles/normal = SubResource( 29 )
 enabled_focus_mode = 0
 expand_icon = true
 script = ExtResource( 7 )
