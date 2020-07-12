@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ArrogantCrawler.Modules.Controllable;
+using ArrogantCrawler.Modules.DraggableCamera;
 using Godot;
 
 namespace ArrogantCrawler.Scenes
@@ -11,8 +12,10 @@ namespace ArrogantCrawler.Scenes
         private Resource _move;
         private Resource _drag;
         private Resource _pointingHand;
-        private Camera2D _camera;
+        private DraggableCamera _camera;
         private CameraShake _cameraShake;
+
+        public Controllable CurrentControllable;
 
         public override void _Ready()
         {
@@ -22,8 +25,32 @@ namespace ArrogantCrawler.Scenes
             _pointingHand = ResourceLoader.Load("res://Assets/cursor-pointinghand.png");
             Input.SetCustomMouseCursor(_pointingHand, Input.CursorShape.PointingHand);
             SetMouseMode(Input.CursorShape.Arrow);
-            _camera = GetNode<Camera2D>("../DraggableCamera");
+            _camera = GetNode<DraggableCamera>("../DraggableCamera");
             _cameraShake = GetNode<CameraShake>("CameraShake");
+        }
+
+        public override void _Process(float delta)
+        {
+            if (!Input.IsActionJustPressed("ui_control") || CurrentControllable == null) return;
+            LeaveControl();
+        }
+
+        public void Control(Controllable controllable)
+        {
+            _camera.Target = controllable;
+            _camera.CanMove = false;
+            CurrentControllable = controllable;
+            CurrentControllable.InControl = true;
+            SetAllControllableEnabled(false);
+        }
+
+        public void LeaveControl()
+        {
+            _camera.Target = null;
+            _camera.CanMove = true;
+            CurrentControllable.InControl = false;
+            CurrentControllable = null;
+            SetAllControllableEnabled(true);
         }
 
         public void SetMouseMode(Input.CursorShape shape)

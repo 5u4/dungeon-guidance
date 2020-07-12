@@ -13,6 +13,7 @@ namespace ArrogantCrawler.Scenes
         private GameManager _gameManager;
         private Pickable _exitButton;
         private Pickable _exit;
+        private bool _movementTutorialPlayed;
 
         public override void _Ready()
         {
@@ -65,10 +66,16 @@ namespace ArrogantCrawler.Scenes
 
         private void OnControl(Controllable controllable)
         {
+            if (_movementTutorialPlayed)
+            {
+                _gameManager.Control(controllable);
+                return;
+            }
             _gameManager.SetAllControllableEnabled(false);
             _camera.Target = controllable;
             _camera.CanMove = false;
             _animationPlayer.Play("ControllableTutorial");
+            _movementTutorialPlayed = true;
         }
 
         private void OnAnimationFinished(string animationName)
@@ -76,7 +83,10 @@ namespace ArrogantCrawler.Scenes
             if (animationName == "Scene")
                 _gameManager.SetAllControllableEnabled(true);
             else if (animationName == "ControllableTutorial")
+            {
                 _goblin.InControl = true;
+                _gameManager.CurrentControllable = _goblin;
+            }
         }
     }
 }
